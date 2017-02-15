@@ -1,0 +1,44 @@
+%%% SRL packages and commands %%%
+%20170215	jeffbl	initial version
+
+
+% copy srl.tex into your own project, then copy/paste the below lines into your document just before \begin{document}
+% BEGIN COPY PASTE SECTION
+% SRL commands to control commenting/blinding/etc
+%\newcommand*{\srlhidecomments}{}%   %put this line (uncommented) in your document to hide comments
+%\newcommand*{\srlblind{}%   %put this line (uncommented)in your document to turn blinding on
+%\input{srl.tex} %uncomment this to include this file so you get all the nice commands...
+% END COPY PASTE SECTION
+
+\usepackage{color,soul}
+\usepackage{booktabs} %much nicer tables
+\usepackage{subfig} %for putting multiple subimages in one figure, with individual captions
+
+% Put things in \hide{this text is hidden!} to make sure they don't appear ever!
+\newcommand{\hide}[1]{}
+
+\sethlcolor{yellow}
+\ifdefined\srlhidecomments
+	\newcommand{\jer}[1] {}
+	\newcommand{\jef}[1] {}
+	\newcommand{\jan}[1] {}
+    %add your own name here...
+\else
+	\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+    %and your own color here if there is no good built-in color...use something that doesn't print too light...
+    % custom color definitions at http://latexcolor.com/
+
+	\newcommand{\jer}[1] { \textcolor{red}{[{Jer:} {#1}}]}
+	\newcommand{\jef}[1] { \textcolor{burntorange}{[{\hl{Jef:}} {#1}}]}
+	\newcommand{\jan}[1] { \textcolor{green}{[{Jan:} {#1}}]}
+    %and don't forget to add your name here!
+\fi
+
+%put things in blind 
+\ifdefined\srlblind
+	\newcommand{\blind}[1]{[omitted for blind review]}
+\else
+	\newcommand{\blind}[1]{#1} %for camera ready (not blinded)
+\fi
+
+%%% end SRL packages and commands %%%
