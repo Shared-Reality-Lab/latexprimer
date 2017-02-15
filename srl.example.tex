@@ -174,23 +174,83 @@ Welcome to SRL.
 We use LaTeX.
 Please don't use Word!
 
-\section{Things yet to come for tutorial}
+\section{LaTeX tools}
+It looks like we're standardizing on using Overleaf\footnote{\url{http://ovewrleaf.com}} for collaborative online editing, but this doesn't work when you're offline, so you'll likely want to set up a real repository via git, and a LaTeX IDE.
+Jeff likes texmaker\footnote{\url{http://www.xm1math.net/texmaker/}} on Linux, but there are others.
+If you do use it on (for example) Ubuntu, the following packages should get pretty much everything you need:
 
-Before, please use either overleaf or a local install (e.g., texmaker) to create a simple LaTeX document and compile it to PDF. There are many online tutorials for this.
+\begin{verbatim}
+sudo apt-get install \
+texmaker \
+texlive-fonts-recommended \
+texlive-fonts-extra \
+texlive-pictures \
+texlive-latex-extra \
+texlive-bibtex-extra \
+imagemagick
+\end{verbatim}
 
-texmaker
+\section{Getting Started}
+Don't make your own document from scratch.
+Go get the latest SIGCHI (Jeff's preference) or IEEE template, chop out (after reading it!) the demonstration text in the example file, and start adding your own content there.
+Even if you don't know where you'll eventually submit, it is better to start with a real template, and change it later.
+
+\section{SRL commands in srl.tex}
+
+\subsection{commenting}
+For comments, you use a commenting command based on your name, which you have to set up in srl.tex.
+Put it in the master version so that everyone gets it for free when they update their srl.tex file.
+Note that before the command there is no space, since otherwise when you shut comments off to send camera ready copy, things will format funny\jef{here is an example comment, note no space before the command in the LaTeX code!}.
+Uncomment the srlhidecomments command at the top of your document to hide all the comments, e.g., before you submit the PDF!
+Blinding the authors can be more tricky, and may need to be done by hand.
+\jef{Anyone know of a good way to do this?}
+
+\subsection{hide}
+If there are things you want to effectively comment out, use the hide command.
+This should be the last sentence you see in this section in the PDF, but there is actually a hide line right after this.
+\hide{This does not appear in the compiled PDF!}
+
+\subsection{blinding}
+Most conferences want you to anonymize your publication for review, so that nobody knows who wrote it.
+If you use the blind command, your secret text will be \blind{normal like this}, but when you uncomment the srlblind command at the top of the document, they will magically become [omitted for blind review].
+Thus, you can toggle it on and off for the entire document to get your pagination and such correct.
+
+\section{Top 10 SRL tips and tricks}
+
+\begin{enumerate}
+
+\item
+Compile your document often.
+NEVER check in a new version without first compiling it.
+If you don't check, you'll forget a brace somewhere, and everyone else working on the document will hate you.
+
+\item
+Don't ever use the built in latex tables.
+They are super ugly.
+Use booktabs instead.\footnote{\url{http://cs.brown.edu/about/system/managed/latex/doc/booktabs.pdf}}
+Note that the package is already included in srl.tex.
+
+\item
+Put each sentence on its own line.
+If you don't, you'll be very sad when trying to do merges via source control (svn/git).
+This won't bother you until everyone is editing at once, which usually happens right before deadline, and then you will curse yourself for not listening.
+
+\item
+Before you use the ref command to do a citation, use a tilde to make a non-breaking space, so that your citation index does not bump to the next line.
+\jef{Needs example.}
+
+\end{enumerate}
+
+\section{Overleaf and git}
+
+TBD
+
+\section{Tutorial notes and stuff to add later}
+
+Before we do a live tutorial, please use either overleaf or a local install (e.g., texmaker) to create a simple LaTeX document and compile it to PDF.
+There are many online tutorials for this (suggestions?).
 
 Overleaf/git integration - main is our git. (confidentiality?) put overleaf link in the document as a comment?
-
-Compile early/often - watch your braces ALWAYS COMPILE BEFORE COMMITTING! Or everyone will hate you.
-
-Use templates for conference, get new each time (minor tweaks, versions, etc) ALWAYS start with their example file and cut out their template stuff so you can add your own. If don't know target, use ACMCHI as a default.
-
-One sentence per line
-
-SRL header for commenting, blinding, \hide, etc.
-
-citations - use non-breaking space
 
 tables \& booktabs
 
@@ -200,7 +260,7 @@ tweaking space (vspace)
 
 math/equations
 
-common special characters (esp. degree symbol)
+common special characters (e.g.,  degree symbol)
 
 final bib tweaks - e.g., condensing conference/journal names
 
@@ -208,7 +268,9 @@ cleaning up for submitting LaTeX source
 
 noindent
 
-what to do if can't find command? google it and install the package. on ubuntu at least, do *not* try and manually install individual packages expcet as a last resort - figure out which texlive package it is in, and just install the whole thing
+bibtex/mendeley
+
+what to do if can't find command? google it and install the package. on ubuntu at least, do *not* try and manually install individual packages except as a last resort - figure out which texlive package it is in, and just install the whole thing
 
 Advanced things not covered : draft mode, 
 
