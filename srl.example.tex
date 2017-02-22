@@ -173,6 +173,7 @@
 Welcome to SRL.
 We use LaTeX.
 Please don't use Word!
+And lord have mercy on your soul if you happen to be asked to submit to conferences that only accept Word documents (some even using IEEE format).
 
 \section{LaTeX tools}
 It looks like we're standardizing on using Overleaf\footnote{\url{http://ovewrleaf.com}} for collaborative online editing, but this doesn't work when you're offline, so you'll likely want to set up a real repository via git, and a LaTeX IDE.
@@ -195,7 +196,14 @@ Don't make your own document from scratch.
 Go get the latest SIGCHI (Jeff's preference) or IEEE template, chop out (after reading it!) the demonstration text in the example file, and start adding your own content there.
 Even if you don't know where you'll eventually submit, it is better to start with a real template, and change it later.
 
+If you are using Overleaf, you can create a link to the srl.tex file, so that you should automatically get changes as it is updated, without having to copy/paste it.
+Note that you do, however, have to manually refresh it from within your project when you want updates.
+To do this, go to Files... -> "File from other Project" in your project in Overleaf, and choose the srl.tex file from this project.
+\footnote{\url{https://www.overleaf.com/help/226-can-i-share-files-e-dot-g-bib-and-some-graphics-across-my-projects}}
+
 \section{SRL commands in srl.tex}
+
+
 
 \subsection{commenting}
 For comments, you use a commenting command based on your name, which you have to set up in srl.tex.
@@ -204,6 +212,7 @@ Note that before the command there is no space, since otherwise when you shut co
 Uncomment the srlhidecomments command at the top of your document to hide all the comments, e.g., before you submit the PDF!
 Blinding the authors can be more tricky, and may need to be done by hand.
 \jef{Anyone know of a good way to do this?}
+\jer{It seems that you've already addressed this!}
 
 \subsection{hide}
 If there are things you want to effectively comment out, use the hide command.
@@ -223,13 +232,15 @@ Thus, you can toggle it on and off for the entire document to get your paginatio
 Compile your document often.
 NEVER check in a new version without first compiling it.
 If you don't check, you'll forget a brace somewhere, and everyone else working on the document will hate you.
+Same goes for missing included files, such as figures, that you did not include in your commit.
 
 \item
 Don't ever use the built in latex tables.
 They are super ugly.
 Use booktabs instead.\footnote{\url{http://cs.brown.edu/about/system/managed/latex/doc/booktabs.pdf}}
 Note that the package is already included in srl.tex.
-
+Wikibooks has a short tutorial that explains them fairly well.
+\jer{an example would be nice; I've actually found the \LaTeX table and longtable environments perfectly adequate, so am curious to see the difference}
 \item
 Put each sentence on its own line.
 If you don't, you'll be very sad when trying to do merges via source control (svn/git).
@@ -243,7 +254,13 @@ Before you use the ref command to do a citation, use a tilde to make a non-break
 
 \section{Overleaf and git}
 
+As a general guideline, never commit generated files, such as PDFs or .aux (etc.) files - there is a .gitignore file at /home/srecollab/git/gitignoreLatex.
+
 TBD
+
+\section{Citations}
+
+This is a must to cover, at least briefly, since it's often done wrong.  Make sure to add your citations in an external .bib file such as the sample.bib here.  It doesn't matter whether you use a bib generator such as Mendeley or "do it yourself".   Here's a citation to the Sensorama, an important piece of prior literature of relevance to Shared Reality~\cite{heilig:sensorama}.
 
 \section{Tutorial notes and stuff to add later}
 
@@ -270,7 +287,7 @@ noindent
 
 bibtex/mendeley
 
-what to do if can't find command? google it and install the package. on ubuntu at least, do *not* try and manually install individual packages except as a last resort - figure out which texlive package it is in, and just install the whole thing
+what to do if can't find command? google it and install the package. on ubuntu at least, do *not* try and manually install individual packages except as a last resort - figure out which texlive package it is in, and just install the whole thing (use \url{http://packages.ubuntu.com} for example and search for the package containing the filename).
 
 Advanced things not covered : draft mode, 
 
@@ -293,8 +310,6 @@ Advanced things not covered : draft mode,
 %
 % Or, just remove \balance and give up on balancing the last page.
 %
-\balance{}
-
 % BALANCE COLUMNS
 \balance{}
 
