@@ -5,7 +5,7 @@
 % BEGIN COPY PASTE SECTION
 % SRL commands to control commenting/blinding/etc
 %\newcommand*{\srlhidecomments}{}%   %put this line (uncommented) in your document to hide comments
-%\newcommand*{\srlblind{}%   %put this line (uncommented)in your document to turn blinding on
+%\newcommand*{\srlblind}{}%   %put this line (uncommented)in your document to turn blinding on
 %\input{srl.tex} %uncomment this to include the file so you get all the nice commands...
 % END COPY PASTE SECTION
 
@@ -24,6 +24,8 @@
 	\newcommand{\jef}[1] {}
 	\newcommand{\jan}[1] {}
     \newcommand{\pef}[1] {}
+    \newcommand{\dan}[1] {}
+    \newcommand{\taeyong}[1]{}
     %add your own name here...
 \else
 	\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
@@ -34,6 +36,8 @@
 	\newcommand{\jef}[1] { \textcolor{burntorange}{[{\hl{Jef:}} {#1}}]}
 	\newcommand{\jan}[1] { \textcolor{green}{[{Jan:} {#1}}]}
     \newcommand{\pef}[1] { \textcolor{magenta}{[{Pef:} {#1}}]}
+    \newcommand{\dan}[1] { \textcolor{blue}{[{Dan:} {#1}}]}	
+    \newcommand{\taeyong}[1]{[\textcolor{red!55!blue}{[{Taeyong:}{#1}}]}% Feel free to use this colour
     %and don't forget to add your name here!
 \fi
 

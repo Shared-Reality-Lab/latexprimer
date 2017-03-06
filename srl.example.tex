@@ -131,7 +131,7 @@
 
 % SRL commands to control commenting/blinding/etc
 %\newcommand*{\srlhidecomments}{}%   %put this line (uncommented) in your document to hide comments
-%\newcommand*{\srlblind{}%   %put this line (uncommented)in your document to turn blinding on
+%\newcommand*{\srlblind}{}%   %put this line (uncommented)in your document to turn blinding on
 \input{srl.tex} %uncomment this to include this file so you get all the nice commands...
 
 % End of preamble. Here it comes the document.
@@ -156,7 +156,6 @@
 }
 
 \maketitle
-
 \begin{abstract}
   A sample document that demonstrates srl.tex and gives specific advice for how we do papers, plus general tips and tricks...
 \end{abstract}
@@ -208,7 +207,7 @@ To do this, go to Files... -> "File from other Project" in your project in Overl
 \subsection{commenting}
 For comments, you use a commenting command based on your name, which you have to set up in srl.tex.
 Put it in the master version so that everyone gets it for free when they update their srl.tex file.
-Note that before the command there is no space, since otherwise when you shut comments off to send camera ready copy, things will format funny\jef{here is an example comment, note no space before the command in the LaTeX code!}.
+Note that before the command there is no space, since otherwise when you shut comments off to send camera ready copy, things will format funny \jef{here is an example comment, note no space before the command in the LaTeX code!}.
 Uncomment the srlhidecomments command at the top of your document to hide all the comments, e.g., before you submit the PDF!
 Blinding the authors can be more tricky, and may need to be done by hand.
 \jef{Anyone know of a good way to do this?}
@@ -240,7 +239,8 @@ They are super ugly.
 Use booktabs instead.\footnote{\url{http://cs.brown.edu/about/system/managed/latex/doc/booktabs.pdf}}
 Note that the package is already included in srl.tex.
 Wikibooks has a short tutorial that explains them fairly well.
-\jer{an example would be nice; I've actually found the \LaTeX table and longtable environments perfectly adequate, so am curious to see the difference}
+\jer{an example would be nice; I've actually found the \LaTeX table and longtable environments perfectly adequate, so am curious to see the difference}\jef{There are examples in the footnoted URL, but you can also use booktabs with longtable...booktabs makes the tables publication-quality, and longtable makes splits across pages better. The footnoted link provides more information about using them together, and this link covers many tabular-related latex packages\footnote{\url{http://tex.stackexchange.com/questions/12672/which-tabular-packages-do-which-tasks-and-which-packages-conflict}}.}
+\dan{There is also this handy website\footnote{\url{http://www.tablesgenerator.com/}} that facilitates table making. Don't forget to change the table style! Look for the drop-down menu at the far right of the bold/italic toolbar.}
 \item
 Put each sentence on its own line.
 If you don't, you'll be very sad when trying to do merges via source control (svn/git).
@@ -256,26 +256,41 @@ Before you use the ref command to do a citation, use a tilde to make a non-break
 
 As a general guideline, never commit generated files, such as PDFs or .aux (etc.) files - there is a .gitignore file at /home/srecollab/git/gitignoreLatex.
 
-TBD
+If you want to use both Overleaf and a local git, that is possible, as is putting everything into the lab git repository on barn.
+Basic steps :
+
+\begin{enumerate}
+\item Git clone the repository from barn
+\item Set a second remote to overleaf
+\item git push to one or both remotes as you make changes
+\end{enumerate}
+
+I suggest that we put the overleaf URL in the document as a comment so we know where to find it.
+
+Also, note that Overleaf probably is not a good place to put confidential (e.g., participant) data, so be careful.
 
 \section{Citations}
 
-This is a must to cover, at least briefly, since it's often done wrong.  Make sure to add your citations in an external .bib file such as the sample.bib here.  It doesn't matter whether you use a bib generator such as Mendeley or "do it yourself".   Here's a citation to the Sensorama, an important piece of prior literature of relevance to Shared Reality~\cite{heilig:sensorama}.
+This is a must to cover, at least briefly, since it's often done wrong.
+Make sure to add your citations in an external .bib file such as the sample.bib here.
+It doesn't matter whether you use a bib generator such as Mendeley or "do it yourself". 
+Here's a citation to the Sensorama, an important piece of prior literature of relevance to Shared Reality~\cite{heilig:sensorama}.
 
 \section{Tutorial notes and stuff to add later}
 
 Before we do a live tutorial, please use either overleaf or a local install (e.g., texmaker) to create a simple LaTeX document and compile it to PDF.
 There are many online tutorials for this (suggestions?).
 
-Overleaf/git integration - main is our git. (confidentiality?) put overleaf link in the document as a comment?
-
-tables \& booktabs
+For the tutorial, will use a lab UIST paper as an example:
+\begin{verbatim}
+git clone git+ssh://$USER@barn.cim.mcgill.ca/home/srecollab/git/publications/2015-CHI-jeffbl-HapticPerception.git
+\end{verbatim}
 
 figures/images : placement on page, column widths, subfig, full width, labeling and referring
 
 tweaking space (vspace)
 
-math/equations
+math/equations $x= \sum_a^b y^3$ Note that you can build them online graphically, e.g. \url{http://www.sciweavers.org/free-online-latex-equation-editor}
 
 common special characters (e.g.,  degree symbol)
 
