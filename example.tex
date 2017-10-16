@@ -5,7 +5,7 @@
 % copyright statement.
 
 % Copyright
-\CopyrightYear{2016}
+\CopyrightYear{2017}
 %\setcopyright{acmcopyright}
 \setcopyright{acmlicensed}
 %\setcopyright{rightsretained}
@@ -76,9 +76,9 @@
 % Paper metadata (use plain text, for PDF inclusion and later
 % re-using, if desired).  Use \emtpyauthor when submitting for review
 % so you remain anonymous.
-\def\plaintitle{Using LaTeX at SRL}
-\def\plainauthor{Jeff Blum, Second Author, Third Author,
-  Fourth Author, Fifth Author, Sixth Author}
+
+\def\plaintitle{SRL Latex Guide}
+\def\plainauthor{SRL Latex Savants}
 \def\emptyauthor{}
 \def\plainkeywords{Authors' choice; of terms; separated; by
   semicolons; include commas, within terms only; required.}
@@ -139,19 +139,15 @@
 
 \title{\plaintitle}
 
-\numberofauthors{3}
+\numberofauthors{2}
 \author{%
-  \alignauthor{Jeff Blum\\
-    \affaddr{for Submission}\\
-    \affaddr{City, Country}\\
+  \alignauthor{SRL LaTeX Savants\\
+    \affaddr{McGill University}\\
+    \affaddr{Montréal, Canada}\\
     \email{e-mail address}}\\
-  \alignauthor{Leave Authors Anonymous\\
-    \affaddr{for Submission}\\
-    \affaddr{City, Country}\\
-    \email{e-mail address}}\\
-  \alignauthor{Leave Authors Anonymous\\
-    \affaddr{for Submission}\\
-    \affaddr{City, Country}\\
+  \alignauthor{Jeremy Cooperstock\\
+    \affaddr{McGill University}\\
+    \affaddr{Montreal, Canada}\\
     \email{e-mail address}}\\
 }
 
@@ -160,46 +156,59 @@
   A sample document that demonstrates srl.tex and gives specific advice for how we do papers, plus general tips and tricks...
 \end{abstract}
 
-\category{H.5.m.}{Information Interfaces and Presentation
-  (e.g. HCI)}{Miscellaneous} \category{See
-  \url{http://acm.org/about/class/1998/} for the full list of ACM
-  classifiers. This section is required.}{}{}
+\category{H.5.m.}{HCI}{Miscellaneous} \category{}{}{}
 
-\keywords{\plainkeywords}
+\keywords{Human-Human Communication}
 
 \section{Introduction}
 
 Welcome to SRL.
 We use LaTeX.
-Please don't use Word!
-And lord have mercy on your soul if you happen to be asked to submit to conferences that only accept Word documents (some even using IEEE format).
+\hide{
+\subsection{Problems in Everyday Communication}
 
-\section{LaTeX tools}
-It looks like we're standardizing on using Overleaf\footnote{\url{http://ovewrleaf.com}} for collaborative online editing, but this doesn't work when you're offline, so you'll likely want to set up a real repository via git, and a LaTeX IDE.
-Jeff likes texmaker\footnote{\url{http://www.xm1math.net/texmaker/}} on Linux, but there are others.
-If you do use it on (for example) Ubuntu, the following packages should get pretty much everything you need:
+\begin{itemize}
+\item 
 
-\begin{verbatim}
-sudo apt-get install \
-texmaker \
-texlive-fonts-recommended \
-texlive-fonts-extra \
-texlive-pictures \
-texlive-latex-extra \
-texlive-bibtex-extra \
-imagemagick
-\end{verbatim}
+Asymmetry  Symmetry (abilities, age, gender, culture, needs, dependency, etc.)
 
-\section{Getting Started}
-Don't make your own document from scratch.
-Go get the latest SIGCHI (Jeff's preference) or IEEE template, chop out (after reading it!) the demonstration text in the example file, and start adding your own content there.
-Even if you don't know where you'll eventually submit, it is better to start with a real template, and change it later.
+\item 
+Intrusiveness, Demanding attentions  Connectedness
 
-If you are using Overleaf, you can create a link to the srl.tex file, so that you should automatically get changes as it is updated, without having to copy/paste it.
-Note that you do, however, have to manually refresh it from within your project when you want updates.
-To do this, go to Files... -> "File from other Project" in your project in Overleaf, and choose the srl.tex file from this project.
-\footnote{\url{https://www.overleaf.com/help/226-can-i-share-files-e-dot-g-bib-and-some-graphics-across-my-projects}}
+\item 
+Situation is multiple-layered, complicated
 
+\item 
+Stress with the overloaded cognition, and perception (vision, audio, haptic)
+
+\item 
+Importance of managing secret, etc.
+
+\end{itemize}
+
+
+\subsection{Objectives}
+
+\begin{itemize}
+\item 
+
+Identify key issues:
+
+\begin{itemize}
+\item 
+problematic phenomena occur in focused situations, dimension of asymmetry, etc.
+\end{itemize}
+
+\item 
+Develop new media technology for communication X that address a subset of key issues
+
+\end{itemize}
+
+
+	Identify key issues:
+	problematic phenomena occur in focused situations, dimension of asymmetry, etc.
+
+}
 \section{SRL commands in srl.tex}
 
 
@@ -207,11 +216,9 @@ To do this, go to Files... -> "File from other Project" in your project in Overl
 \subsection{commenting}
 For comments, you use a commenting command based on your name, which you have to set up in srl.tex.
 Put it in the master version so that everyone gets it for free when they update their srl.tex file.
-Note that before the command there is no space, since otherwise when you shut comments off to send camera ready copy, things will format funny \jef{here is an example comment, note no space before the command in the LaTeX code!}.
+Note that before the command there is no space, since otherwise when you shut comments off to send camera ready copy, things will format funny\jef{ here is an example comment, note no space before the command in the LaTeX code!}.
 Uncomment the srlhidecomments command at the top of your document to hide all the comments, e.g., before you submit the PDF!
 Blinding the authors can be more tricky, and may need to be done by hand.
-\jef{Anyone know of a good way to do this?}
-\jer{It seems that you've already addressed this!}
 
 \subsection{hide}
 If there are things you want to effectively comment out, use the hide command.
@@ -247,8 +254,7 @@ If you don't, you'll be very sad when trying to do merges via source control (sv
 This won't bother you until everyone is editing at once, which usually happens right before deadline, and then you will curse yourself for not listening.
 
 \item
-Before you use the ref command to do a citation, use a tilde to make a non-breaking space, so that your citation index does not bump to the next line.
-\jef{Needs example.}
+Just before you use the ref command to do a citation, use a tilde to make a non-breaking space (replacing the normal space), so that your citation index does not bump to the next line.
 
 \end{enumerate}
 
@@ -282,9 +288,10 @@ Before we do a live tutorial, please use either overleaf or a local install (e.g
 There are many online tutorials for this (suggestions?).
 
 For the tutorial, will use a lab UIST paper as an example:
-\begin{verbatim}
-git clone git+ssh://$USER@barn.cim.mcgill.ca/home/srecollab/git/publications/2015-CHI-jeffbl-HapticPerception.git
-\end{verbatim}
+
+%\begin{verbatim}
+git clone \url{git+ssh://$USER@barn.cim.mcgill.ca/home/srecollab/git/publications/2015-CHI-jeffbl-HapticPerception.git}
+%\end{verbatim}
 
 figures/images : placement on page, column widths, subfig, full width, labeling and referring
 
@@ -306,6 +313,28 @@ what to do if can't find command? google it and install the package. on ubuntu a
 
 Advanced things not covered : draft mode, 
 
+\section{Annotations Test Area}
+	\jer{test}
+	\jef{test}
+	\jan{test}
+    \pef{test}
+    \dan{test}
+    \guofan{test}
+    \taeyong{test}
+    \hao{test}
+    \paris{test}
+    \rog{test}
+    \joe{test}
+    \gan{test}
+	\zored{test}
+    \lis{test}
+    \Catherine{test}
+    \pre{test}
+    \reb{test}
+    \bij{test}
+    \fer{test}
+    \ani{test}
+    \oli{test}
 % Balancing columns in a ref list is a bit of a pain because you
 % either use a hack like flushend or balance, or manually insert
 % a column break.  http://www.tex.ac.uk/cgi-bin/texfaq2html?label=balance
